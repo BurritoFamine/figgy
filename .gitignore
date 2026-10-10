@@ -1,4 +1,4 @@
-# Home Assistant runtime / secrets
+# Secrets and runtime data
 homeassistant/secrets.yaml
 homeassistant/.storage/
 homeassistant/*.db
@@ -9,3 +9,5 @@ homeassistant/deps/
 homeassistant/tts/
 homeassistant/media/
 homeassistant/backups/
+homeassistant/.cloud/
+homeassistant/.ha_run.lock
