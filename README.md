@@ -1,0 +1,2 @@
+# figgy
+Home automation project
