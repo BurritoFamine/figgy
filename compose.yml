@@ -1,9 +1,9 @@
 services:
   homeassistant:
-    container_name: homeassistant
+    container_name: home-assistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - /opt/figgy/homeassistant:/config
+      - /opt/figgy/home-assistant:/config
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
