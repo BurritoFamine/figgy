@@ -1,0 +1,11 @@
+# Home Assistant runtime / secrets
+homeassistant/secrets.yaml
+homeassistant/.storage/
+homeassistant/*.db
+homeassistant/*.db-shm
+homeassistant/*.db-wal
+homeassistant/*.log
+homeassistant/deps/
+homeassistant/tts/
+homeassistant/media/
+homeassistant/backups/
