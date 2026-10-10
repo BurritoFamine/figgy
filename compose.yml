@@ -12,3 +12,15 @@ services:
     network_mode: host
     environment:
       TZ: America/Los_Angeles
+  jellyfin:
+      image: jellyfin/jellyfin:latest
+      container_name: jellyfin
+      user: "1000:1000"
+      volumes:
+        - /opt/figgy/jellyfin:/config
+        - /srv/media:/media
+      ports:
+        - 8096:8096
+      restart: unless-stopped
+      environment:
+        - TZ=America/Los_Angeles
