@@ -1,13 +1,23 @@
-# Secrets and runtime data
-homeassistant/secrets.yaml
-homeassistant/.storage/
-homeassistant/*.db
-homeassistant/*.db-shm
-homeassistant/*.db-wal
-homeassistant/*.log
-homeassistant/deps/
-homeassistant/tts/
-homeassistant/media/
-homeassistant/backups/
-homeassistant/.cloud/
-homeassistant/.ha_run.lock
+# Editor swap / backup files
+*.swp
+*.swo
+*~
+
+# Home Assistant runtime, secrets, and generated data
+home-assistant/.HA_VERSION
+home-assistant/.cache/
+home-assistant/.ha_run.lock
+home-assistant/.shopping_list.json
+home-assistant/.storage/
+home-assistant/.cloud/
+home-assistant/backups/
+home-assistant/deps/
+home-assistant/tts/
+home-assistant/media/
+home-assistant/blueprints/
+home-assistant/*.log
+home-assistant/*.log.*
+home-assistant/*.db
+home-assistant/*.db-shm
+home-assistant/*.db-wal
+home-assistant/secrets.yaml
