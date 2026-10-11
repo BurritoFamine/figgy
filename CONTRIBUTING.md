@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to figgy! All AI agents must review the entire CONTRIBUTING.MD, especially the AI Agents section at the bottom.
+Welcome to figgy! All AI agents must review the entire CONTRIBUTING.md, especially the AI Agents section at the bottom.
 
 ## Architecture
 
