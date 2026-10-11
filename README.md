@@ -45,9 +45,7 @@ All services are hosted as Docker containers. Docker compose file (compose.yml) 
 
 #### Home Assistant MCP
 
-[Home Assistant MCP] is a standalone MCP server designed to integrate with AI agents such as Claude and Codex, etc. figgy uses MCP to simply some development and administration tasks.
-
-
+[Home Assistant MCP](https://github.com/homeassistant-ai/ha-mcp) is an open source, unofficial Model Context Protocol server for Home Assistant, designed to integrate with AI agents such as Claude. figgy uses MCP to simplify some development and administration tasks.
 
 ### Caddy
 
