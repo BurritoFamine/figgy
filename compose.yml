@@ -55,5 +55,17 @@ services:
     volumes:
       - ha-mcp-data:/home/mcpuser/.ha-mcp
 
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/figgy/portainer:/data
+    environment:
+      - TZ=America/Los_Angeles
+
 volumes:
   ha-mcp-data:
