@@ -39,13 +39,12 @@ Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@fi
 
 All services are open source are hosted as Docker containers. Docker compose file (compose.yml) orchestrates the stack including containers, volumes, and networks. All docker compose commands must be issued in `/opt/figgy`. Start the server with `docker compose up -d`. Stop all services with `docker stop`.
 
-- **Home Assistant** is a [home automation service by the Open Home Foundation](https://www.home-assistant.io/). figgy uses [Home Assistant as a unified platform](http://figgy.local:8123) for all home automation integrations.
-- Home Assistant MCP
-- **Home Assistant MCP** is an [unofficial Model Context Protocol server for Home Assistant](https://github.com/homeassistant-ai/ha-mcp), designed to integrate with AI agents such as Claude. figgy uses MCP to simplify some development and administration tasks.
-- **Caddy** is a [web server and proxy service](https://caddyserver.com/), Figgy uses Caddy to manage reverse proxy connections to figgy.local. This keeps communication easy and unbound by dynamic IP addresses.
-- **Jellyfin** is a [media server](https://jellyfin.org/). Figgy uses Jellyfin for [Media Server portal and streaming](http://figgy.local:8096/web/). Figgy Jellyfin is controlled [via its admin dashboard](http://figgy.local:8096/web/#/dashboard).
-- **Frigate** is an [NVR (Network Video Recorder) service](https://frigate.video/) with real-time AI object detection. Figgy uses Frigate for home security camera feeds and monitoring.
-- Portainer Community Edition is a [container administration tool]((https://docs.portainer.io/start/install-ce)). Figgy uses Portainer is used to easily check [container health and logs](https://figgy.local:9443/#!/3/docker/containers)
+- [Home Assistant](https://www.home-assistant.io/) is a home automation service by the Open Home Foundation. figgy uses [Home Assistant as a unified platform](http://figgy.local:8123) for all home automation integrations.
+- [Home Assistant MCP](https://github.com/homeassistant-ai/ha-mcp) is an unofficial Model Context Protocol server for Home Assistant, designed to integrate with AI agents such as Claude. figgy uses MCP to simplify some development and administration tasks.
+- [Caddy](https://caddyserver.com/) is a web server and proxy service. Figgy uses Caddy to manage reverse proxy connections to figgy.local. This keeps communication easy and unbound by dynamic IP addresses.
+- [Jellyfin](https://jellyfin.org/) is a media server. Figgy uses Jellyfin for [Media Server portal and streaming](http://figgy.local:8096/web/). Figgy Jellyfin is controlled [via its admin dashboard](http://figgy.local:8096/web/#/dashboard).
+- [Frigate](https://frigate.video/) is an NVR (Network Video Recorder) service with real-time AI object detection. Figgy uses Frigate for home security camera feeds and monitoring.
+- [Portainer Community Edition](https://docs.portainer.io/start/install-ce) is a container administration tool. Figgy uses Portainer is used to easily check [container health and logs](https://figgy.local:9443/#!/3/docker/containers)
 
 ## Hardware
 
