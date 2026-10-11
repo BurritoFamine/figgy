@@ -21,3 +21,4 @@ home-assistant/*.db
 home-assistant/*.db-shm
 home-assistant/*.db-wal
 home-assistant/secrets.yaml
+.env

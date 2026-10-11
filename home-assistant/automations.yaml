@@ -1,10 +1,1 @@
-- id: '1791662398080'
-  alias: New automation
-  description: ''
-  triggers: []
-  conditions: []
-  actions:
-  - action: backup.create
-    metadata: {}
-    data: {}
-  mode: single
+[]
