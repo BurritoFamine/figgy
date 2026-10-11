@@ -12,18 +12,20 @@ services:
     network_mode: host
     environment:
       TZ: America/Los_Angeles
+
   jellyfin:
-      image: jellyfin/jellyfin:latest
-      container_name: jellyfin
-      user: "1000:1000"
-      volumes:
-        - /opt/figgy/jellyfin:/config
-        - /srv/media:/media
-      ports:
-        - 8096:8096
-      restart: unless-stopped
-      environment:
-        - TZ=America/Los_Angeles
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    user: "1000:1000"
+    volumes:
+      - /opt/figgy/jellyfin:/config
+      - /srv/media:/media
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+    environment:
+      - TZ=America/Los_Angeles
+
   caddy:
     image: caddy:latest
     container_name: caddy
@@ -37,3 +39,21 @@ services:
       - /opt/figgy/caddy/config:/config
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+  ha-mcp:
+    image: ghcr.io/homeassistant-ai/ha-mcp:latest
+    container_name: ha-mcp
+    command: ha-mcp-web
+    ports:
+      - "8086:8086"
+    environment:
+      - HOMEASSISTANT_URL=http://host.docker.internal:8123
+      - HOMEASSISTANT_TOKEN=${HOMEASSISTANT_TOKEN}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    volumes:
+      - ha-mcp-data:/home/mcpuser/.ha-mcp
+
+volumes:
+  ha-mcp-data:
