@@ -4,10 +4,12 @@ Figgy is a home automation and LAN administration project. Join figgy.local toda
 
 ## Key features
 
+figgy handles many home automations and tasks securely and locally, using open source hardware and software whenever possible.
+
 - Control all home devices with a single dashboard
-- Host movies and personal media securely
-- Handle camera feeds and security monitoring, locally and securely
-- Locate household members in real time securely
+- Host movies and personal media
+- Handle camera feeds and security monitoring
+- Locate household members in real time
 - Monitor home power consumption
 
 ## Quick Links
