@@ -1,6 +1,6 @@
 # Figgy
 
-Figgy is a home automation and LAN administration project by Tyler Fluegel. Join figgy.local today!
+Figgy is a home automation and LAN administration project. Join figgy.local today!
 
 ## Key features
 
