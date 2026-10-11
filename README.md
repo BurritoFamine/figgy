@@ -1,26 +1,97 @@
 # Figgy
 
-Figgy is a home automation and services server built with Home Assistant.
+Figgy is a home automation and LAN administration project by Tyler Fluegel. Join figgy.local today!
 
-## Requirements
+## Key features
 
-Figgy is a complete and secure home automation system.
+- Control all home devices with a single dashboard
+- Host movies and personal media securely
+- Handle security monitoring camera feeds, locally and securely
+- Monitor household member locations with Home Assistant Companion app
+- Monitor home power consumption
 
-- Centralize control of all device in my home on a single app
-- Schedule control of devices such as theromstat and lighting
+## Quick Links
 
-### Future considerations
+- [Home Assistant](http://figgy.local:8123)
+- [Router](http://192.168.0.1/) (use the wifi password)
+- [Jellyfin Media Server Home](http://figgy.local:8096/web/)
+- [Portainer](https://figgy.local:9443/#!/3/docker/containers)
+- [Home Assistant MCP](https://figgy.local/mcp)
 
-These features are low priority but may be implemented in the future. Ensure Figgy is prepared to handle these.
+## Hosting
 
-- Push notifications for alerting systems like smoke detectors
-- Push notifications for motion detected on cameras
-- Weather service integration
+Figgy is a headless server, with most administration handled remotely via SSH and WinSCP tools. Figgy apps are deployed as a docker stack. git is used to control some service configurations, but a deployment pipeline has not yet been developed.
 
-## Devices
-Figgy should integrate with all devices in the home. If device uses HTTP, suggest open source and secure options. If device does not use HTTP, suggest hardware to allow device to communicate with Figgy.
+### Server arch
 
-### My devices
+- /opt/figgy - Home directory for all Docker services and configuration
+- /srv/media - All hosted media including movies and personal photos
+
+### Connecting to the server
+
+Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@figgy.local`). Ask Tyler for a user if you don't have one.
+
+## Docker stack
+
+All services are hosted as Docker containers. Docker compose file (compose.yml) orchestrates the stack including containers, volumes, and networks. All docker compose commands must be issued in `/opt/figgy`. Start the server with `docker compose up -d`. Stop all services with `docker stop`.
+
+### Home Assistant
+
+[Home Assistant](https://www.home-assistant.io/) is a free, open source project by the Open Home Foundation. figgy uses [Home Assistant as a unified platform](http://figgy.local:8123) for all home automation integrations.
+
+#### Home Assistant MCP
+
+Connect your AI agent (Claude, Codex, etc) to my figgy's MCP server.
+
+Review existing [Model Context Protocol documentation](https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers) on local MCP server.
+
+##### Claude setup
+
+1. Install npm
+2. Update your claude_desktop_config.json. You can find this file in Claude configuration (File > Settings > Developer > Edit config)
+    "mcpServers": {
+	    "figgy": {
+	    "command": "cmd",
+	    "args": ["/c", "npx", "-y", "mcp-remote", "https://figgy.local/mcp"],
+	    "env": {
+		    "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+	    }
+        }
+    }
+3. Completely restart Claude
+4. Prompt `How is my Home Assistant server doing?`
+
+#### Server administration
+
+Home Assistant MCP has excellent integration with telemetry and health checks. It is capable of reporting its status in plain language. Simply prompt `How is my Home Assistant server doing?`
+
+##### Generated dashboards
+
+Home Assistant MCP is incredibly good at generating dashboards. Try variations of the below prompt.
+
+`Generate a new Home Assistant dashboard called "Command Center". This is a Star Trek themed dashboard with jellyfin media and KMHD radio player at the top and light controls at the bottom.`
+
+### Caddy
+
+[Caddy](https://caddyserver.com/) is a free, open source web server and proxy service, Figgy uses Caddy to manage reverse proxy connections to figgy.local. This keeps communication easy and unbound by dynamic IP addresses.
+
+### Jellyfin
+
+[Jellyfin](https://jellyfin.org/) is an free, open source media server. Figgy uses Jellyfin for [Media Server portal and streaming](http://figgy.local:8096/web/). Figgy Jellyfin is controlled [via its admin dashboard](http://figgy.local:8096/web/#/dashboard).
+
+### Frigate
+
+[Frigate](https://frigate.video/) is a free NVR (Network Video Recorder) with real-time AI object detection on local systems. Figgy uses Frigate for home security camera feeds and monitoring.
+
+### Portainer
+
+[Portainer Community Edition](https://hub.docker.com/r/portainer/portainer-ce) is a free, open source container administration tool. Figgy uses Portainer is used to easily check [container health and logs](https://figgy.local:9443/#!/3/docker/containers)
+
+## Hardware
+
+Below is a list of real devices that figgy integrates
+
+### IOT devices
 - Lights (Kasa and BN-LINK and IR)
 - TVs and projectors (IR)
 - Thermostat (Google Nest)
@@ -29,9 +100,30 @@ Figgy should integrate with all devices in the home. If device uses HTTP, sugges
 - Door locks
 - Interior and external home cameras (Tapo)
 
-### Future considerations
+### Controllers
 
-These devices are low priority but may be implemented in the future. Ensure Figgy is prepared to handle these.
+Controllers are interfaces that are used to monitor and control Figgy.
+
+- Tablet device with Android app, restricted to LAN.
+- iPhone device iOS app with full control of home automation
+- Android app with camera feed
+- Dedicated remote control for IR devices like TVs
+- Dedicated remote bluetooth control
+
+## Backlog
+
+Stuff I want to do later.
+
+- Sysadmin: Add user automation across jellyfin
+
+### Tech debt
+
+Secure data and replace closed source technologies.
+
+- Secure all traffic with TLS (remove `NODE_TLS_REJECT_UNAUTHORIZED: 0`)
+- Get rid of Tapo cameras - use open hardware with Frigate
+
+### Feature wishlist
 
 - Home intercom and audio system integration
 - Outdoor weather station
@@ -43,42 +135,5 @@ These devices are low priority but may be implemented in the future. Ensure Figg
 - LG refrigerator with ThinQ integration
 - Coffee maker with manual toggles
 - HDMI switch with audio output to soundbar via HDMI eARCs
-
-## Controllers
-
-Controllers are interfaces that are used to monitor and control Figgy. I should be capable of monitoring and controlling Figgy with the following controllers.
-
-- Tablet device with Android app, restricted to LAN.
-- iPhone device iOS app with full control of home automation
-- Android app with camera feed
-- Dedicated remote control for IR devices like TVs
-
-## Architecture
-
-### Security and Privacy
-
-Figgy should use all open source technogies controlled by me. Figgy should always use HTTPS, secure websockets, encryption, and all other security best practices. Figgy control points should always use 2FA. All Figgy traffic should be restricted to LAN. Figgy can only be controlled outside of LAN using iOS and Andriod apps. Figgy control should only allow connections through trusted proxies on my VPN, and only when required (for example, viewing security cameras when away from home). Enforce all best practices documented by Home Assistant.
-Apply the STRIDE model and outline security requirements.
-
-
-### Software
-
-Home Automation will be the foundation of Figgy. I am comfortable building and deploying containerized software onto my raspberry pi devices. I need an online portal and dashboard accessed via LAN at localhost. Suggest a "control panel" UI for tablet devices created by Home Automation, but I will probably be interested in building my own. I need an Android and iOS app that are also capable of controlling Figgy and viewing cameras.
-
-### Hardware
-
-Hardware should be secure. Ideally it should be open source and popular with the Home Assistant community. I can develop my own hardware with a raspberry pi and a breadboard where appropriate.
-Server
-
-Home Automation server must be hosted locally on dedicated hardware. I should be able to fork my own build of Home Automation and deploy it to the hardware. Describe the benefits of containerization.
-
-#### Devices
-
-Device traffic should always be encrypted and secure.
-
-#### Networking
-
-##### Protocols
-IR, HTTPS, and RFID are acceptable. List any other protocols that are going to be used in this.
-
-Create a network diagram of Figgy with devices and required network infrastructure for security.
+- Push notifications for alerting systems like smoke detectors
+- Push notifications for motion detected on cameras
