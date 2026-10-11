@@ -22,7 +22,7 @@ All connections must be made within `The Burrow` network.
 
 ## Hosting
 
-Figgy is a headless server, with most administration handled remotely via SSH and WinSCP tools. Figgy apps are deployed as a docker stack. git is used to control some service configurations, but a deployment pipeline has not yet been developed.
+Figgy is a headless Debian server, with most administration handled remotely via SSH and WinSCP tools. Figgy apps are deployed as a docker stack. git is used to control some service configurations, but a deployment pipeline has not yet been developed.
 
 ### Server arch
 
