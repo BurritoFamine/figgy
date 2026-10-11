@@ -33,7 +33,7 @@ Figgy is a headless Debian server, with most administration handled remotely via
 
 ### Connecting to the server
 
-Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@figgy.local`). Ask Tyler for a user if you don't have one.
+Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@figgy.local`). See CONTRIBUTING.md.
 
 ## Docker stack
 
@@ -48,10 +48,10 @@ figgy uses a Docker stack of open source microservices. Docker compose file (com
 
 ## Hardware
 
-Below is a list of real devices that figgy integrates
+**IOT devices** are real devices that figgy interacts with.
 
-### IOT devices
-- Lights (Kasa and BN-LINK and IR)
+- TP-Link lights (Kasa)
+- BN-LINK and IR
 - TVs and projectors (IR)
 - Thermostat (Google Nest)
 - 2 automatic cat feeders (Petkit Fresh Element Solo)
@@ -59,21 +59,13 @@ Below is a list of real devices that figgy integrates
 - Door locks
 - Interior and external home cameras (Tapo)
 
-### Controllers
+**Controllers** are interfaces that are used to monitor and control Figgy.
 
-Controllers are interfaces that are used to monitor and control Figgy.
-
-- Tablet device with Android app, restricted to LAN.
-- iPhone device iOS app with full control of home automation
-- Android app with camera feed
-- Dedicated remote control for IR devices like TVs
-- Dedicated remote bluetooth control
+- Home Assistant app for mobile devices
+- Switchbot for IR devices like projector and lamps
+- TODO Dedicated remote bluetooth control
 
 ## Backlog
-
-Stuff I want to do later.
-
-- Sysadmin: Add user automation across jellyfin
 
 ### Tech debt
 
@@ -81,6 +73,7 @@ Secure data and replace closed source technologies.
 
 - Secure all traffic with TLS (remove `NODE_TLS_REJECT_UNAUTHORIZED: 0`)
 - Get rid of Tapo cameras - use open hardware with Frigate
+- Sysadmin: Add user automation across jellyfin
 
 ### Feature wishlist
 
