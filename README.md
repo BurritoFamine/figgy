@@ -37,7 +37,7 @@ Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@fi
 
 ## Docker stack
 
-All services are open source are hosted as Docker containers. Docker compose file (compose.yml) orchestrates the stack including containers, volumes, and networks. All docker compose commands must be issued in `/opt/figgy`. Start the server with `docker compose up -d`. Stop all services with `docker stop`.
+figgy uses a Docker stack of open source microservices. Docker compose file (compose.yml) orchestrates the stack including containers, volumes, and networks. All docker compose commands must be issued in `/opt/figgy`. Start the server with `docker compose up -d`. Stop all services with `docker stop`.
 
 - [Home Assistant](https://www.home-assistant.io/) is a home automation service by the Open Home Foundation. figgy uses [Home Assistant as a unified platform](http://figgy.local:8123) for all home automation integrations.
 - [Home Assistant MCP](https://github.com/homeassistant-ai/ha-mcp) is an unofficial Model Context Protocol server for Home Assistant, designed to integrate with AI agents such as Claude. figgy uses MCP to simplify some development and administration tasks.
