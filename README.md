@@ -22,20 +22,9 @@ All connections must be made within `The Burrow` network.
 - [Portainer](https://figgy.local:9443/#!/3/docker/containers)
 - [Home Assistant MCP](https://figgy.local/mcp)
 
-## Hosting
+## Software
 
 Figgy is a headless Debian server, with most administration handled remotely via SSH and WinSCP tools. Figgy apps are deployed as a docker stack. git is used to control some service configurations, but a deployment pipeline has not yet been developed.
-
-### Server arch
-
-- /opt/figgy - Home directory for all Docker services and configuration
-- /srv/media - All hosted media including movies and personal photos
-
-### Connecting to the server
-
-Connect to `The Burrow` LAN. Administration is handled via SSH (try `ssh user@figgy.local`). See CONTRIBUTING.md.
-
-## Docker stack
 
 figgy uses a Docker stack of open source microservices. Docker compose file (compose.yml) orchestrates the stack including containers, volumes, and networks. All docker compose commands must be issued in `/opt/figgy`. Start the server with `docker compose up -d`. Stop all services with `docker stop`.
 
