@@ -12,6 +12,8 @@ Figgy is a home automation and LAN administration project by Tyler Fluegel. Join
 
 ## Quick Links
 
+All connections must be made within `The Burrow` network.
+
 - [Home Assistant](http://figgy.local:8123)
 - [Router](http://192.168.0.1/) (use the wifi password)
 - [Jellyfin Media Server Home](http://figgy.local:8096/web/)
