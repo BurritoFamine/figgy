@@ -2,10 +2,6 @@
 
 Figgy is a home automation and LAN administration project. Join figgy.local today!
 
-## Key features
-
-figgy handles many home automations and tasks securely and locally, using open source hardware and software whenever possible.
-
 - Control all home devices with a single dashboard
 - Host movies and personal media
 - Handle camera feeds and security monitoring
