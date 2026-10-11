@@ -6,8 +6,8 @@ Figgy is a home automation and LAN administration project. Join figgy.local toda
 
 - Control all home devices with a single dashboard
 - Host movies and personal media securely
-- Handle security monitoring camera feeds, locally and securely
-- Monitor household member locations with Home Assistant Companion app
+- Handle camera feeds and security monitoring, locally and securely
+- Locate household members in real time securely
 - Monitor home power consumption
 
 ## Quick Links
