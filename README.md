@@ -43,35 +43,9 @@ All services are hosted as Docker containers. Docker compose file (compose.yml) 
 
 #### Home Assistant MCP
 
-Connect your AI agent (Claude, Codex, etc) to my figgy's MCP server.
+[Home Assistant MCP] is a standalone MCP server designed to integrate with AI agents such as Claude and Codex, etc. figgy uses MCP to simply some development and administration tasks.
 
-Review existing [Model Context Protocol documentation](https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers) on local MCP server.
 
-##### Claude setup
-
-1. Install npm
-2. Update your claude_desktop_config.json. You can find this file in Claude configuration (File > Settings > Developer > Edit config)
-    "mcpServers": {
-	    "figgy": {
-	    "command": "cmd",
-	    "args": ["/c", "npx", "-y", "mcp-remote", "https://figgy.local/mcp"],
-	    "env": {
-		    "NODE_TLS_REJECT_UNAUTHORIZED": "0"
-	    }
-        }
-    }
-3. Completely restart Claude
-4. Prompt `How is my Home Assistant server doing?`
-
-#### Server administration
-
-Home Assistant MCP has excellent integration with telemetry and health checks. It is capable of reporting its status in plain language. Simply prompt `How is my Home Assistant server doing?`
-
-##### Generated dashboards
-
-Home Assistant MCP is incredibly good at generating dashboards. Try variations of the below prompt.
-
-`Generate a new Home Assistant dashboard called "Command Center". This is a Star Trek themed dashboard with jellyfin media and KMHD radio player at the top and light controls at the bottom.`
 
 ### Caddy
 
