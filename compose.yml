@@ -37,6 +37,7 @@ services:
       - /opt/figgy/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /opt/figgy/caddy/data:/data
       - /opt/figgy/caddy/config:/config
+      - /opt/figgy/landing:/srv/landing:ro
     extra_hosts:
       - "host.docker.internal:host-gateway"
 

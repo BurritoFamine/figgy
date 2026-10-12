@@ -1,8 +1,17 @@
-figgy.local {
+http://figgy.local {
+    root * /srv/landing
+    file_server
+}
+
+https://figgy.local {
     tls internal
-    reverse_proxy host.docker.internal:8123
 
     handle /mcp* {
         reverse_proxy host.docker.internal:8086
+    }
+
+    handle {
+        root * /srv/landing
+        file_server
     }
 }
