@@ -2,11 +2,11 @@ services:
   homeassistant:
     container_name: home-assistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
+    restart: unless-stopped
     volumes:
       - /opt/figgy/home-assistant:/config
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
-    restart: unless-stopped
     stop_grace_period: 60s
     privileged: true
     network_mode: host
@@ -16,15 +16,32 @@ services:
   jellyfin:
     image: jellyfin/jellyfin:latest
     container_name: jellyfin
+    restart: unless-stopped
     user: "1000:1000"
     volumes:
       - /opt/figgy/jellyfin:/config
       - /srv/media:/media
     ports:
       - 8096:8096
-    restart: unless-stopped
     environment:
       - TZ=America/Los_Angeles
+
+  makemkv:
+    image: jlesage/makemkv
+    container_name: makemkv
+    restart: unless-stopped
+    ports:
+      - "5800:5800"
+    volumes:
+      - ./config:/config:rw
+      - ./output:/output:rw
+    devices:
+      - /dev/sr0
+      - /dev/sg3
+    environment:
+      - AUTO_DISC_RIPPER=1
+      - AUTO_DISC_RIPPER_EJECT=1
+      - MAKEMKV_KEY=BETA
 
   caddy:
     image: caddy:latest
@@ -44,6 +61,7 @@ services:
   ha-mcp:
     image: ghcr.io/homeassistant-ai/ha-mcp:latest
     container_name: ha-mcp
+    restart: unless-stopped
     command: ha-mcp-web
     ports:
       - "8086:8086"
@@ -52,7 +70,6 @@ services:
       - HOMEASSISTANT_TOKEN=${HOMEASSISTANT_TOKEN}
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    restart: unless-stopped
     volumes:
       - ha-mcp-data:/home/mcpuser/.ha-mcp
 
