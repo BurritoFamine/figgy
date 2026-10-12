@@ -33,11 +33,11 @@ services:
     ports:
       - "5800:5800"
     volumes:
-      - ./config:/config:rw
-      - ./output:/output:rw
+      - /opt/figgy/makemkv/config:/config:rw
+      - /opt/figgy/makemkv/output:/output:rw
     devices:
       - /dev/sr0
-      - /dev/sg3
+      - /dev/sg0
     environment:
       - AUTO_DISC_RIPPER=1
       - AUTO_DISC_RIPPER_EJECT=1
