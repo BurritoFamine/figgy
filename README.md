@@ -12,7 +12,8 @@ Figgy is a home automation and LAN administration project. Join figgy.local toda
 
 All connections must be made within `The Burrow` network.
 
-- [Home Assistant](http://figgy.local:8123)
+- [Figgy landing page](https://figgy.local/)
+- [Home Assistant](http://figgy.local:8123/)
 - [Jellyfin Media Server Home](http://figgy.local:8096/web/)
 - [MakeMKV UI](http://figgy.local:5800/)
 - [Router](http://192.168.0.1/) (use the wifi password)
