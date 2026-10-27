@@ -10,6 +10,10 @@ https://figgy.local {
         reverse_proxy host.docker.internal:8086
     }
 
+    handle_path /helloworld* {
+        reverse_proxy helloworld:8080
+    }
+
     handle {
         root * /srv/landing
         file_server
